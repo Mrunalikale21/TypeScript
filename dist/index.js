@@ -1,4 +1,5 @@
 "use strict";
+//tsc .\sample.ts -w for run
 // const a = 344;
 // alert(a);
 let a = 25; //ifit declares once we cant redelcare
@@ -58,3 +59,36 @@ const kendal = {
     },
 };
 kendal.func(20, 40);
+//option parameter
+const func6 = (n1, m1, l) => {
+    if (typeof l === "undefined")
+        return n1 * m1;
+    return n1 * m1 * l;
+};
+func6(25, 23);
+//default parameter
+const func7 = (g, u, v = 20) => {
+    return g * u * v;
+};
+func7(25, 26);
+//rest operator
+const func9 = (...k) => {
+    return k;
+};
+func9(24, 34, 3, 23, 4, 2, 1);
+function lol(n) {
+    return 45;
+}
+const lol2 = function lol(n) {
+    return n;
+};
+const getData = (product) => {
+    console.log(product);
+};
+const productOne = {
+    name: "macBook",
+    stock: 46,
+    price: 9999,
+    photo: "samplephoto"
+};
+getData(productOne);
