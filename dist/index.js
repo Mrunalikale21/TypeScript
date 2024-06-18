@@ -1,5 +1,6 @@
 "use strict";
 //tsc .\sample.ts -w for run
+//tsc -w
 // const a = 344;
 // alert(a);
 let a = 25; //ifit declares once we cant redelcare
@@ -89,6 +90,69 @@ const productOne = {
     name: "macBook",
     stock: 46,
     price: 9999,
-    photo: "samplephoto"
+    photo: "samplephoto",
+    id: "dkfbvholshnfbvb"
 };
 getData(productOne);
+//never type
+const errHandler = () => {
+    throw new Error();
+};
+const mode = "dark";
+//classes
+class Player {
+    constructor(height, weight) {
+        this.myHeight = () => {
+            return this.height;
+        };
+        this.height = height;
+        this.weight = weight;
+    }
+}
+const abhi = new Player(100, 150);
+console.log(abhi.myHeight);
+//shortcut way
+class player2 {
+    constructor(height, weight, power) {
+        this.height = height;
+        this.weight = weight;
+        this.power = power;
+        this.getMyHeight = () => this.height;
+        this.id = String(Math.random() * 100);
+    }
+}
+const abhi2 = new player2(233, 422, 32);
+console.log(abhi2.getMyHeight);
+class plater extends player2 {
+    constructor(height, weight, power, special) {
+        super(height, weight, power);
+        this.getMyPower = () => this.power;
+        this.special = special;
+    }
+    //getter setter function
+    get MyWeight() {
+        return this.weight;
+    }
+    set changeWeight(val) {
+        this.weight = val;
+    }
+}
+const vicky = new plater(100, 233, 45, true);
+console.log("height", vicky.getMyHeight());
+console.log("weight", vicky.weight);
+console.log("power", vicky.getMyPower());
+console.log("id", vicky.id);
+vicky.changeWeight = 1000;
+console.log("weight", vicky.MyWeight);
+class Product4 {
+    constructor(//directly accesed
+    name, price, stock) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.id = String(Math.random() * 100);
+        this.getId = () => this.id;
+    }
+}
+const monu = new Product4("gfrekfn", 34000, 20);
+monu.getId();
