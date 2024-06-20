@@ -1,3 +1,7 @@
+//tsc .\sample.ts -w for run
+//tsc -w
+
+
 // const a = 344;
 
 // alert(a);
@@ -108,4 +112,182 @@ const kendal:newObj={
 }
 
 kendal.func(20,40);
+
+//functions
+
+type FuncType2 = (n1:number , m1:number, l?:number) => number;
+
+
+//option parameter
+const func6: FuncType2 = (n1,m1,l) => {
+  if(typeof l === "undefined") return n1*m1;
+
+  return n1*m1*l;
+}
+
+func6(25,23);
+
+//default parameter
+const func7 = (g:number, u:number , v:number = 20): number => {
+  return g*u*v
+}
+
+func7(25,26);
+
+//rest operator
+const func9 = (...k:number[]) => {
+  return k;
+}
+
+func9(24,34,3,23,4,2,1)
+
+function lol(n:number):number{
+  return 45;
+}
+
+const lol2:FuncType = function lol(n){
+  return n
+}
+
+//function with object
+
+// const getData = (product:
+//   {name:string, 
+//     stock:number, 
+//     price:number,
+//     photo: string,
+//   }
+// ):void => {
+//    console.log(product);
+// }
+
+interface Product{
+  name:string;
+  stock:number; 
+  price:number;
+ photo: string;
+ readonly id: String
+}
+
+type GetData = (product: Product) => void
+
+const getData : GetData = (product) => {
+  console.log(product);
+}
+
+const productOne :Product ={
+  name : "macBook",
+  stock : 46,
+  price: 9999,
+  photo: "samplephoto",
+  id: "dkfbvholshnfbvb"
+}
+
+getData(productOne);
+
+//never type
+const errHandler = ():never => {
+  throw new Error();
+}
+
+type themeMode = "light" | "dark";
+const mode : themeMode = "dark"
+
+
+//classes
+class Player {
+  private height;
+  weight;
+
+
+constructor(height:number, weight:number){
+  this.height = height;
+  this.weight = weight;
+}
+
+myHeight = () => {
+  return this.height
+}
+}
+
+const abhi = new Player(100,150);
+console.log(abhi.myHeight);
+
+//shortcut way
+class player2{
+  public readonly id:string
+  constructor(
+    private height : number,
+    public weight : number,
+    protected power: number
+    
+  ){
+    this.id = String(Math.random()*100)
+  }
+
+  getMyHeight = () => this.height;
+}
+
+const abhi2 = new player2(233,422,32);
+console.log(abhi2.getMyHeight)
+
+
+class plater extends player2{
+  special : boolean
+  constructor(
+    height:number,
+     weight:number, 
+     power:number,
+     special: boolean ){
+    super(height,weight,power);
+    this.special = special;
+  }
+
+  getMyPower = () => this.power
+
+  //getter setter function
+  get MyWeight() : number {
+    return this.weight
+  }
+
+  set changeWeight(val : number){
+    this.weight = val;
+  }
+  
+
+}
+
+const vicky = new plater(100,233,45,true);
+console.log("height" , vicky.getMyHeight());
+console.log("weight" , vicky.weight);
+console.log("power" , vicky.getMyPower());
+console.log("id", vicky.id);
+vicky.changeWeight = 1000;
+console.log("weight" , vicky.MyWeight);
+
+interface productType{
+  name:string,
+  price:number,
+  stock:number,
+  getId : () => string
+  offer? :boolean,
+}
+
+class Product4 implements productType{
+ 
+  private id : string = String(Math.random()*100);
+
+   constructor( //directly accesed
+    public name:string,
+    public price : number,
+    public stock: number
+   ){}
+
+   getId = () => this.id;
+   
+}
+
+const monu = new Product4("gfrekfn", 34000,20);
+monu.getId();
+
 
